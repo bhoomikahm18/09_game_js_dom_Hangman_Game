@@ -79,7 +79,7 @@ const generateWord = (optionValue) => {
     //Choose random word
     chosenWord = optionArray[Math.floor(Math.random() * optionArray.length)];
     chosenWord = chosenWord.toUpperCase();
-    console.log(chosenWord);
+    // console.log(chosenWord);
 
     //replace every letter with span containing dash
     let displayItem = chosenWord.replace(/./g, '<span class="dashes">_</span>');
