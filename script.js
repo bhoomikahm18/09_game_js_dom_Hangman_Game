@@ -93,12 +93,42 @@ const initializer = () => {
     winCount = 0;
     count = 0;
 
+    //Initially erase all content and hide letters and new game button
+    userInputSection.innerHTML = "";
+    optionsContainer.innerHTML = "";
+    letterContainer.classList.add("hide");
+    newGameContainer.classList.add("hide");
+    letterContainer.innerHTML = "";
+
     //For creating letter buttons
     for (let i = 65; i < 91; i++) {
         let button = document.createElement("button");
         button.classList.add("letters");
         //Number to ASCII[A-Z]
         button.innerText = String.fromCharCode(i);
+        //Character button click
+        button.addEventListener("click", ()=>{
+            let charArray = chosenWord.split("");
+            let dashes = document.getElementsByClassName("dashes");
+            //If array contains clicked value replace the matched dash with letter else dram on canvas
+            if(charArray.includes(button.innerText)){
+                charArray.forEach((char, index) => {
+                    //If character in array is same as clicked button
+                    if(char === button.innerText){
+                        //replace dash with letter
+                        dashes[index].innerText = char;
+                        //increment counter
+                        winCount += 1;
+                        //if wincount equals word length
+                        if(winCount == charArray.length){
+                            resultText.innerHTML = `<h2 class='win-msg'>You Win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
+                            //block all buttons
+                            blocker();
+                        }
+                    }
+                })
+            }
+        })
         letterContainer.append(button);
     }
 
