@@ -53,13 +53,23 @@ const generateWord = (optionValue) => {
             button.classList.add("active");
         }
         button.disabled = true;
-    })
-}
+    });
+};
 
 //Initial function (Called when page loads/user presses new game)
 const initializer = () => {
     winCount = 0;
     count = 0;
+
+    //For creating letter buttons
+    for (let i = 65; i < 91; i++) {
+        let button = document.createElement("button");
+        button.classList.add("letters");
+        //Number to ASCII[A-Z]
+        button.innerText = string.fromCharCode(i);
+        letterContainer.append(button);
+    }
+
     displayOptions();
 };
 
