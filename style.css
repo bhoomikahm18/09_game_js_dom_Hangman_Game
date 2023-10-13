@@ -23,3 +23,13 @@ body{
     box-shadow: 0 1.2em 2.4em rgba(111, 85, 0, 0.25);
 
 }
+
+#options-container{
+    text-align: center;
+}
+#options-container div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1.2em 0 2.4em 0;
+}
