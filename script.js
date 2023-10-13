@@ -38,10 +38,22 @@ let chosenWord = "";
 const displayOptions = () => {
     optionsContainer.innerHTML += `<h3>Please Select An Options</h3>`;
     let buttonCon = document.createElement("div");
-    for(let value in options){
-        buttonCon.innerHTML += `<button class="options" onclick="generateWord(${value})">${value}</button>`;
+    for (let value in options) {
+        buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}')">${value}</button>`;
     }
     optionsContainer.appendChild(buttonCon);
+}
+
+//Word Generator
+const generateWord = (optionValue) => {
+    let optionsButtons = document.querySelectorAll(".options");
+    //If optionValue matches the button innerText then high light the button
+    optionsButtons.forEach((button) => {
+        if (button.innerHTML.toLowerCase() === optionValue) {
+            button.classList.add("active");
+        }
+        button.disabled = true;
+    })
 }
 
 //Initial function (Called when page loads/user presses new game)
